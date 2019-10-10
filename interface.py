@@ -5,11 +5,16 @@ import urllib.parse
 import requests
 import json
 
+from datetime import datetime
 from requests.exceptions import HTTPError
 from epics import PV
 
-pvs = ['MTEST:RAND']
-URL = 'http://10.0.6.48:7379'
+pvs = []
+with open('PV.txt', 'r') as f_:
+    for pv in f_.readlines():
+        pvs.append(pv)
+
+URL = 'http://0.0.0.0:7379'
 SET = URL + '/SET'
 POST = URL + '/POST'
 PUB = URL + '/PUBLISH'
@@ -19,6 +24,18 @@ logging.basicConfig(level=logging.INFO,
                     datefmt='%d/%m/%Y %H:%M:%S')
 logger = logging.getLogger()
 
+def format_severity(severity):
+    if severity== 0:
+        return 'OK'
+    elif severity== 1:
+        return 'MINOR'
+    elif severity== 2:
+        return 'MAJOR'
+    elif severity== 3:
+        return 'INVALID'
+
+def format_ts(ts):
+    return datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
 def http_pub_val(pvname, payload):
     p2 = urllib.parse.quote('{}/{}'.format(pvname, payload))
@@ -34,8 +51,8 @@ def post_cb(**kwargs):
         payload = json.dumps({
             'value':kwargs['value'],
             'units':kwargs['units'],
-            'severity':kwargs['severity'],
-            'timestamp':kwargs['timestamp'],
+            'severity':format_severity(kwargs['severity']),
+            'timestamp':format_ts(kwargs['timestamp']),
             'host':kwargs['host'],
             'status':kwargs['status'],
         })
@@ -49,7 +66,7 @@ def post_cb(**kwargs):
     except Exception as err:
         logger.exception(f'Other error occurred: {err}')  # Python 3.6
     else:
-        pass#logger.info('Success !{}'.format(payload))
+        pass
 
 if __name__ == '__main__':
     for pv in pvs:

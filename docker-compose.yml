@@ -8,3 +8,9 @@ services:
     image: anapsix/webdis
     ports:
       - '7379:7379'
+  web:
+    image: httpd
+    ports:
+      - '8080:80'
+    volumes:
+      - './web-page:/usr/local/apache2/htdocs/epics'
