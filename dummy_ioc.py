@@ -8,7 +8,7 @@ pvdb = {
     'RAND' : {
         'prec' : 3,
         'scan' : 0.1,
-        'egu':'rand'
+        'unit' : 'rand'
     },
 }
 

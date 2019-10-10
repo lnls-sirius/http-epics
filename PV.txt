@@ -1,1 +1,8 @@
-MTEST:RAND
+RA-RF:PowerSensor1:PwrAvg-Mon
+RA-RF:PowerSensor1:TracDataAvg-Mon
+BO-Fam:PS-B-2:Current-Mon
+BO-Fam:PS-B-1:Current-Mon
+SI-Fam:PS-B1B2-1:Current-Mon
+SI-Fam:PS-B1B2-2:Current-Mon
+BO-35D:DI-DCCT:Current-Mon
+SI-13C4:DI-DCCT:Current-Mon

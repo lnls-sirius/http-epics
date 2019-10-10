@@ -10,6 +10,7 @@ window.onload = function () {
         timestamp:document.getElementById("t1"),
         value:document.getElementById("v1"),
         unit:document.getElementById("u1"),
+        host:document.getElementById("h1"),
     }
     pv1.name.innerText = 'MTEST:RAND'
 
@@ -23,6 +24,7 @@ window.onload = function () {
             pv1.timestamp.innerText = res['timestamp'];
             pv1.value.innerText = res['value'];
             pv1.unit.innerText = res['unit'];
+            pv1.host.innerText = res['host'];
         }
     };
 
