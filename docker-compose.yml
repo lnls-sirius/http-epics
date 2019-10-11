@@ -6,6 +6,16 @@ services:
       - '6379:6379'
   webdis:
     image: anapsix/webdis
+    environment:
+      - "VERBOSITY=3"
+      - "REDIS_HOST=0.0.0.0"
+      - "REDIS_PORT=6379"
+      - "DATABASE=0"
+      - "HTTP_HOST=0.0.0.0"
+      - "HTTP_PORT=7379"
+      - "THREADS=5"
+      - "POOL_SIZE=10"
+      - "WEBSOCKETS=false"
     ports:
       - '7379:7379'
   web:
