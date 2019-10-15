@@ -19,7 +19,7 @@ services:
     ports:
       - '7379:7379'
   epics:
-    image: lnlscon/http-epics
+    image: lnlscon/http-epics:v1.0
     build:
       context: "."
       dockerfile: "Dockerfile"
