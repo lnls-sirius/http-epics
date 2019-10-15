@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   redis:
     image: redis
@@ -8,13 +8,28 @@ services:
     image: anapsix/webdis
     environment:
       - "VERBOSITY=3"
-      - "REDIS_HOST=10.0.6.48"
+      - "REDIS_HOST=10.128.255.5"
       - "REDIS_PORT=6379"
       - "DATABASE=0"
-      - "HTTP_HOST=0.0.0.0"
+      - "HTTP_HOST=10.128.255.5"
       - "HTTP_PORT=7379"
       - "THREADS=5"
       - "POOL_SIZE=10"
       - "WEBSOCKETS=false"
     ports:
       - '7379:7379'
+  epics:
+    image: lnlscon/http-epics
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+      labels:
+        - "br.com.lnls-sirius.description=EPICS HTTP Interface"
+        - "br.com.lnls-sirius.department=CONS"
+        - "br.com.lnls-sirius.maintener=Claudio Ferreira Carneiro"
+    ports:
+      - "5064:5064/tcp"
+      - "5064:5064/udp"
+    environment:
+      - "SRV_HOST=10.128.255.5"
+      - "SRV_PORT=7379"
