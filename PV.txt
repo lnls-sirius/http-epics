@@ -6,6 +6,4 @@ SI-Fam:PS-B1B2-1:Current-Mon
 SI-Fam:PS-B1B2-2:Current-Mon
 BO-35D:DI-DCCT:Current-Mon
 SI-13C4:DI-DCCT:Current-Mon
-BO-35D:DI-DCCT:Current-Mon
-SI-13C4:DI-DCCT:Current-Mon
 SI-14C4:DI-DCCT:Current-Mon
