@@ -55,3 +55,10 @@ RUN apt-get update  --fix-missing  &&\
     apt-get -y install python3     &&\
     apt-get -y install python3-pip &&\
     pip3 install pyepics
+
+WORKDIR /opt
+
+COPY interface.py interface.py
+COPY PV.txt PV.txt
+
+CMD /bin/bash -l -c "python3 /opt/interface.py --host ${SRV_HOST:-10.128.255.5} --port ${SRV_PORT:-7379}"
