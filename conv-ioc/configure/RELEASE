@@ -1,0 +1,7 @@
+CALC=/opt/epics-R3.15.6/modules/synApps/calc-R3-7-1
+
+EPICS_BASE=/opt/epics-R3.15.6/base
+
+-include $(TOP)/../RELEASE.local
+-include $(TOP)/configure/RELEASE.local
+

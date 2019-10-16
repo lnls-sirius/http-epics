@@ -1,0 +1,29 @@
+# BO-35D:DI-DCCT:Current-Mon
+# SI-13C4:DI-DCCT:Current-Mon
+# SI-14C4:DI-DCCT:Current-Mon
+record(compress, "Conv:BO-35D:DI-DCCT:RawReadingsAvg-Mon"){
+    field(DESC, "Corrente media no DCCT BO")
+    field(INP,  "BO-35D:DI-DCCT:RawReadings-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "700")
+    field(NSAM, "1")
+    field(EGU,  "mA")
+}
+
+record(compress, "Conv:SI-13C4:DI-DCCT:CurrentAvg-Mon"){
+    field(DESC, "Corrente media no DCCT SI13")
+    field(INP,  "SI-13C4:DI-DCCT:RawReadings-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "700")
+    field(NSAM, "1")
+    field(EGU,  "mA")
+}
+
+record(compress, "Conv:SI-14C4:DI-DCCT:CurrentAvg-Mon"){
+    field(DESC, "Corrente media no DCCT SI14")
+    field(INP,  "SI-14C4:DI-DCCT:RawReadings-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "700")
+    field(NSAM, "1")
+    field(EGU,  "mA")
+}

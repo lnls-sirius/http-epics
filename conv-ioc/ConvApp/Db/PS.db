@@ -1,0 +1,40 @@
+# BO-Fam:PS-B-2:Current-Mon
+# BO-Fam:PS-B-1:Current-Mon
+# SI-Fam:PS-B1B2-1:Current-Mon
+# SI-Fam:PS-B1B2-2:Current-Mon
+
+record(compress, "Conv:BO-Fam:PS-B-1:WfmAvg-Mon"){
+    field(DESC, "Corrente media no dipolo booster 1")
+    field(INP,  "BO-Fam:PS-B-1:Wfm-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "3920")
+    field(NSAM, "1")
+    field(EGU,  "A")
+}
+
+record(compress, "Conv:BO-Fam:PS-B-2:WfmAvg-Mon"){
+    field(DESC, "Corrente media no dipolo booster 2")
+    field(INP,  "BO-Fam:PS-B-2:Wfm-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "3920")
+    field(NSAM, "1")
+    field(EGU,  "A")
+}
+
+record(compress, "Conv:SI-Fam:PS-B1B2-1:WfmAvg-Mon"){
+    field(DESC, "Corrent media dipolo anel PS-B1B2-1")
+    field(INP,  "BO-Fam:PS-B1B2-1:Wfm-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "3920")
+    field(NSAM, "1")
+    field(EGU,  "A")
+}
+
+record(compress, "Conv:SI-Fam:PS-B1B2-2:WfmAvg-Mon"){
+    field(DESC, "Corrent media dipolo anel PS-B1B2-2")
+    field(INP,  "BO-Fam:PS-B1B2-2:Wfm-Mon CP MSS")
+    field(ALG,  "N to 1 Average")
+    field(N,    "3920")
+    field(NSAM, "1")
+    field(EGU,  "A")
+}
