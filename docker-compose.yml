@@ -3,13 +3,13 @@ services:
   redis:
     image: redis
     ports:
-      - '6379:6379'
+      - '6380:6379'
   webdis:
     image: anapsix/webdis
     environment:
       - "VERBOSITY=3"
       - "REDIS_HOST=10.128.255.5"
-      - "REDIS_PORT=6379"
+      - "REDIS_PORT=6380"
       - "DATABASE=0"
       - "HTTP_HOST=10.128.255.5"
       - "HTTP_PORT=7379"
@@ -19,7 +19,7 @@ services:
     ports:
       - '7379:7379'
   epics:
-    image: lnlscon/http-epics:v1.0
+    image: lnlscon/http-epics:v1.1
     build:
       context: "."
       dockerfile: "Dockerfile"

@@ -52,8 +52,6 @@ def post_cb(**kwargs):
         logger.exception('HTTP error occurred: {}'.format(http_err))  # Python 3.6
     except Exception as err:
         logger.exception('Other error occurred: {}'.format(err))  # Python 3.6
-    else:
-        pass
 
 def load_pvs():
     pvs = []
@@ -67,12 +65,11 @@ class Manager():
         self.pvs = {}
         for pv in pvs_list:
             self.pvs[pv] = PV(pv, callback=post_cb)
-        
+
         self.info_worker = threading.Thread(
             target=self.update_info, daemon=True)
         self.info_worker.start()
-        logger.info('Managing {} '.format(self.pvs.imtems
-        ))
+        logger.info('Managing {} '.format(self.pvs.keys()))
 
 
     def update_info(self):
@@ -99,6 +96,8 @@ if __name__ == '__main__':
     SET = URL + '/SET'
     POST = URL + '/POST'
     PUB = URL + '/PUBLISH'
+    logger.info("Http-Redis at {}".format(URL))
+    logger.info("Set: {} Pub: {} Post: {} ".format(SET, PUB, POST))
 
     manager = Manager(pvs_list=load_pvs())
 
