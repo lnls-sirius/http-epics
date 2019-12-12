@@ -1,5 +1,5 @@
 import axios from 'axios'
-export const WEBDIS_URL = "http://10.0.6.48:7379";;
+export const WEBDIS_URL = "http://10.128.255.5/webdis";
 export const GET = WEBDIS_URL + '/GET';
 
 export const PVS = [
