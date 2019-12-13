@@ -44,6 +44,8 @@ services:
     ports:
       - "5064:5064/tcp"
       - "5064:5064/udp"
+    volumes:
+      - "./PV.txt:/opt/PV.txt"
     environment:
       - "SRV_HOST=10.128.255.5"
       - "SRV_PORT=7379"

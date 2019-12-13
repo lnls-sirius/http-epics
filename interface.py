@@ -42,6 +42,7 @@ def post_cb(**kwargs):
             'timestamp':format_ts(kwargs['timestamp']),
             'host':kwargs['host'],
             'status':kwargs['status'],
+            'precision':kwargs['precision']
         })
         response = http_pub_val(pvname, payload)
         response.raise_for_status()
