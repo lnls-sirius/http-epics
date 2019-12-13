@@ -1,4 +1,4 @@
-CALC=/opt/epics-R3.15.6/modules/synApps/calc-R3-7-1
+CALC=/opt/epics-R3.15.6/modules/synApps/calc-R3-7-3
 
 EPICS_BASE=/opt/epics-R3.15.6/base
 

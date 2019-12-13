@@ -18,6 +18,20 @@ services:
       - "WEBSOCKETS=false"
     ports:
       - '7379:7379'
+  conv:
+    image: lnlscon/epics-conv:v1.0
+    build:
+      context: "conv-ioc/"
+      dockerfile: "Dockerfile"
+      labels:
+        - "br.com.lnls-sirius.description=Conversion IOC"
+        - "br.com.lnls-sirius.department=CONS"
+        - "br.com.lnls-sirius.maintener=Claudio Ferreira Carneiro"
+    ports:
+      - "5064:5064/tcp"
+      - "5064:5064/udp"
+    environment:
+      - "PORT=22105"
   epics:
     image: lnlscon/http-epics:v1.1
     build:
