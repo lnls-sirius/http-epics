@@ -31,9 +31,19 @@ class App extends Component {
             return <PV name={d.name} desc={d.desc} key={d.name}/>
         });
 
-        return (<div>
+        return (
+        <table>
+            <tr>
+                <th>Desc</th>
+                <th>PV</th>
+                <th>Value</th>
+                <th>EGU</th>
+                <th>Timestamp</th>
+                <th>Severity</th>
+                <th>IOC Host</th>
+            </tr>
             {items}
-        </div>);
+        </table>);
     }
 }
 export default App;

@@ -8,7 +8,8 @@ class PV extends Component {
             name:'',
             value:'',
             host:'',
-            severity:''
+            severity:'',
+            units:''
         }
     }
 
@@ -17,16 +18,21 @@ class PV extends Component {
             getValue(this.props.name, (resp) => { this.setState({...resp})})
         }, 1000);
     }
+    componentWillUnmount(){
+        // Todo: Remove the interval!
+    }
 
     render() {
         return (
-            <div>
-               {this.props.desc}&ensp;&ensp;
-               {this.props.name}&ensp;&ensp;&ensp;
-               {/* {this.state.severity}&ensp; */}
-               {/* {this.state.host}&ensp; */}
-               {this.state.value}
-            </div>
+            <tr>
+                <td>{this.props.desc}</td>
+                <td>{this.state.name}</td>
+                <td>{this.state.value}</td>
+                <td>{this.state.units}</td>
+                <td>{this.state.timestamp}</td>
+                <td>{this.state.severity}</td>
+                <td>{this.state.host}</td>
+            </tr>
         )
     }
 }
