@@ -65,7 +65,10 @@ class Manager():
     def __init__(self, pvs_list=[], **kwargs):
         self.pvs = {}
         for pv in pvs_list:
-            self.pvs[pv] = PV(pv, callback=post_cb)
+            try:
+                self.pvs[pv] = PV(pv, callback=post_cb)
+            except:
+                logger.exception("Unable to create channel {}".format(pv))
 
         self.info_worker = threading.Thread(
             target=self.update_info, daemon=True)
