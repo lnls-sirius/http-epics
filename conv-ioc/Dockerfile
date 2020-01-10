@@ -6,4 +6,5 @@ COPY ConvApp ConvApp
 COPY iocBoot iocBoot
 COPY configure configure
 RUN make -j 16
+ENV EPICS_CA_MAX_ARRAY_BYTES 120000000
 CMD /usr/local/bin/procServ -L - -f --chdir /opt/conv-ioc/iocBoot/iocConv ${PORT} ./st.cmd

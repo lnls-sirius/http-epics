@@ -33,7 +33,7 @@ services:
     environment:
       - "PORT=22105"
   epics:
-    image: lnlscon/http-epics:v1.1
+    image: lnlscon/http-epics:v1.2
     build:
       context: "."
       dockerfile: "Dockerfile"
