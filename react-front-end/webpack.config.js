@@ -12,7 +12,7 @@ module.exports = {
       chunks: 'all',
     },
   },
-  mode: process.env.NODE_ENV || 'development',
+  mode: process.env.NODE_ENV || 'production',
   // 'development' | 'production'
   resolve: {
      modules: [path.resolve(__dirname, 'src'), 'node_modules']
