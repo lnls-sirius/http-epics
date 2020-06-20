@@ -2,10 +2,13 @@ version: '3.7'
 services:
   redis:
     image: redis
+    hostname: redis
     ports:
       - '6380:6379'
+
   webdis:
     image: anapsix/webdis
+    hostname: webdis
     environment:
       - "VERBOSITY=3"
       - "REDIS_HOST=10.128.255.5"
@@ -18,8 +21,10 @@ services:
       - "WEBSOCKETS=false"
     ports:
       - '7379:7379'
+
   conv:
-    image: lnlscon/epics-conv:v1.0
+    image: lnlscon/epics-conv:v1.2
+    hostname: conv
     build:
       context: "conv-ioc/"
       dockerfile: "Dockerfile"
@@ -32,10 +37,12 @@ services:
       - "5064:5064/udp"
     environment:
       - "PORT=22105"
+
   epics:
-    image: lnlscon/http-epics:v1.2
+    image: lnlscon/http-epics:v1.3
+    hostname: epics
     build:
-      context: "."
+      context: "epics-redis/."
       dockerfile: "Dockerfile"
       labels:
         - "br.com.lnls-sirius.description=EPICS HTTP Interface"
@@ -48,4 +55,5 @@ services:
       - "./PV.txt:/opt/PV.txt"
     environment:
       - "SRV_HOST=10.128.255.5"
-      - "SRV_PORT=7379"
+      - "SRV_PORT=6380"
+      - "SRV_DB=0"
