@@ -1,59 +1,48 @@
 version: '3.7'
 services:
-  redis:
-    image: redis
-    hostname: redis
+  webdis:
+    image: lnlscon/webdis:v0.1.10
+    hostname: webdis
+    build:
+      context: "webdis/"
+      dockerfile: "Dockerfile"
     ports:
       - '6380:6379'
-
-  webdis:
-    image: anapsix/webdis
-    hostname: webdis
-    environment:
-      - "VERBOSITY=3"
-      - "REDIS_HOST=10.128.255.5"
-      - "REDIS_PORT=6380"
-      - "DATABASE=0"
-      - "HTTP_HOST=10.128.255.5"
-      - "HTTP_PORT=7379"
-      - "THREADS=5"
-      - "POOL_SIZE=10"
-      - "WEBSOCKETS=false"
-    ports:
       - '7379:7379'
-
-  conv:
-    image: lnlscon/epics-conv:v1.2
-    hostname: conv
-    build:
-      context: "conv-ioc/"
-      dockerfile: "Dockerfile"
-      labels:
-        - "br.com.lnls-sirius.description=Conversion IOC"
-        - "br.com.lnls-sirius.department=CONS"
-        - "br.com.lnls-sirius.maintener=Claudio Ferreira Carneiro"
-    ports:
-      - "5064:5064/tcp"
-      - "5064:5064/udp"
-    environment:
-      - "PORT=22105"
 
   epics:
     image: lnlscon/http-epics:v1.3
     hostname: epics
     build:
-      context: "epics-redis/."
+      context: "epics-redis/"
       dockerfile: "Dockerfile"
       labels:
         - "br.com.lnls-sirius.description=EPICS HTTP Interface"
         - "br.com.lnls-sirius.department=CONS"
         - "br.com.lnls-sirius.maintener=Claudio Ferreira Carneiro"
-    ports:
-      - "5064:5064/tcp"
-      - "5064:5064/udp"
+    network_mode: host
+#   ports:
+#     - "5064:5064/tcp"
+#     - "5064:5064/udp"
     volumes:
       - "./PV.txt:/opt/PV.txt"
     environment:
       - "SRV_HOST=10.128.255.5"
       - "SRV_PORT=6380"
       - "SRV_DB=0"
+
+# conv:
+#   image: lnlscon/epics-conv:v1.2
+#   hostname: conv
+#   build:
+#     context: "conv-ioc/"
+#     dockerfile: "Dockerfile"
+#     labels:
+#       - "br.com.lnls-sirius.description=Conversion IOC"
+#       - "br.com.lnls-sirius.department=CONS"
+#       - "br.com.lnls-sirius.maintener=Claudio Ferreira Carneiro"
+#   ports:
+#     - "5064:5064/tcp"
+#     - "5064:5064/udp"
+#   environment:
+#     - "PORT=22105"
