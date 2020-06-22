@@ -11,7 +11,7 @@ services:
       - '7379:7379'
 
   epics:
-    image: lnlscon/http-epics:v1.3
+    image: lnlscon/http-epics:v1.5
     hostname: epics
     build:
       context: "epics-redis/"
@@ -25,7 +25,7 @@ services:
 #     - "5064:5064/tcp"
 #     - "5064:5064/udp"
     volumes:
-      - "./PV.txt:/opt/PV.txt"
+      - "./epics-redis/PV.txt:/opt/PV.txt"
     environment:
       - "SRV_HOST=10.128.255.5"
       - "SRV_PORT=6380"

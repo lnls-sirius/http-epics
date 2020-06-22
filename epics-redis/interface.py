@@ -25,7 +25,8 @@ def format_severity(severity):
 
 
 def format_ts(ts):
-    return datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
+    #return datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def load_pvs():
@@ -70,7 +71,7 @@ class Manager:
         logger.info("Manager: PV info thread start.")
         while True:
             for pvname, pv in self.pvs.items():
-                print(pvname, pv.get_ctrlvars())
+                pv.get_ctrlvars()
             time.sleep(10)
         logger.info("Manager: PV info thread finish")
 

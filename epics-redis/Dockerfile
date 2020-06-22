@@ -2,7 +2,8 @@
 # LNLS - Brazilian Synchrotron Light Source Laboratory
 FROM lnlscon/epics-r3.15.8:v1.0
 LABEL maintainer="Claudio Carneiro <claudio.carneiro@lnls.br>"
-
+ENV TZ America/Sao_Paulo
+RUN date
 # Python3
 WORKDIR /opt
 
