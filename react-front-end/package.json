@@ -10,12 +10,13 @@
     "@fortawesome/react-fontawesome": "^0.1.5",
     "acorn": "6.1.1",
     "axios": "^0.19.0",
+    "node-sass": "^5.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "simplify-js": "^1.2.3"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.3.4",
     "@babel/node": "7.2.2",
     "@babel/plugin-proposal-class-properties": "7.3.4",
@@ -33,7 +34,7 @@
     "style-loader": "0.23.1",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.2.1"
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
     "build": "babel-node ./node_modules/webpack/bin/webpack",
